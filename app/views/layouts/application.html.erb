@@ -1,7 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-  <title>FreegoOnRails</title>
+  <meta charset="UTF-8">
+  <title>freego magnet</title>
+  <meta name="description" content="un set di magneti per creare costruzioni bidimensionali che sembrano 3D">
+  <meta name="keywords" content="freego, magnet, freego magnet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css">
+  <script async src="//www.google-analytics.com/analytics.js"></script>
+  <link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+      #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+  </style>
+  <meta property="fb:appid" content="931884716842527" />
+  <meta property="fb:admins" content="1620154158,593589551,1312414796" />
+  <meta property="og:title" content="freego magnet" />
+  <meta property="og:description" content="Quello che ti serve per tornare bambino" />
+  <meta property="og:url" content="http://freegomag.net" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://freegomag.net/assets/triangle.jpg" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,5 +28,8 @@
 
 <%= yield %>
 
+<%= render partial: '/layouts/footer' %>
+
+<div id="fb-root"></div>
 </body>
 </html>
