@@ -30,6 +30,8 @@ set :scm, :git
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :rails_env, :production
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
