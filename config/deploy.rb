@@ -47,7 +47,7 @@ namespace :deploy do
     end
   end
 
-  after :compile_assets, :copy_manifest do
+  after "deploy:compile_assets", :copy_manifest do
     on roles(:web) do
       within release_path do
         system '******* ora eseguo il task'
