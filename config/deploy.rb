@@ -50,6 +50,7 @@ namespace :deploy do
   after :compile_assets, :copy_manifest do
     on roles(:web) do
       within release_path do
+        system '******* ora eseguo il task'
         execute :cp, "#{release_path}/public/assets/*manifest*", "#{release_path}/public/assets/manifest.json"
       end
     end
