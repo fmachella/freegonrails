@@ -17,7 +17,7 @@ set :scm, :git
 # set :format, :pretty
 
 # Default value for :log_level is :debug
-# set :log_level, :debug
+set :log_level, :info
 
 # Default value for :pty is false
 # set :pty, true
@@ -50,8 +50,7 @@ namespace :deploy do
   before 'deploy:assets:backup_manifest', :copy_manifest do
     on roles(:web) do
       within release_path do
-        system '******* ora eseguo il task'
-        execute :cp, "#{release_path}/public/assets/*manifest*", "#{release_path}/public/assets/manifest.json"
+        execute :cp, "#{release_path}/public/assets/.sprockets-manifest*", "#{release_path}/public/assets/manifest.json"
       end
     end
   end
