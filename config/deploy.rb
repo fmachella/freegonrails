@@ -38,13 +38,13 @@ set :rails_env, :production
 
 namespace :deploy do
 
-
   before 'deploy:assets:backup_manifest', :copy_manifest do
     on roles(:web) do
       within release_path do
-        manifest_file = capture(:ls,"public/assets/.sprockets-manifest*")
-        purged_filename = manifest_file.scan(/.*(manifest-.*)/)[0][0].to_s
-        execute :cp, 'public/assets/.sprockets-manifest*', "public/assets/#{purged_filename}"
+        purged_filename = capture(:ls,"public/assets/.sprockets-manifest*").scan(/.*(manifest-.*)/)[0][0].to_s
+        execute :cp,
+                release_path.join('public',fetch(:assets_prefix),'.sprockets-manifest*'),
+                release_path.join('public',fetch(:assets_prefix),purged_filename)
       end
     end
   end
