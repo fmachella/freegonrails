@@ -4,4 +4,8 @@ class WelcomeController < ApplicationController
 
   end
 
+  def prenota
+
+  end
+
 end
