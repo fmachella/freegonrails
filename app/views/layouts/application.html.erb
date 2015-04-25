@@ -8,66 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
         rel="stylesheet" type="text/css">
-  <script async src="www.google-analytics.com/analytics.js"></script>
+  <script async="" src="www.google-analytics.com/analytics.js"></script>
   <link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
   <style type="text/css">
       #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
   </style>
-  <meta property="fb:appid" content="931884716842527" />
-  <meta property="fb:admins" content="1620154158,593589551,1312414796" />
-  <meta property="og:title" content="freego magnet" />
-  <meta property="og:description" content="Quello che ti serve per tornare bambino" />
-  <meta property="og:url" content="http://freegomag.net" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://freegomag.net/assets/triangle.jpg" />
-  <script type="application/javascript">
-      window.fbAsyncInit = function() {
-          FB.init({
-              appId      : '931884716842527',
-              xfbml      : true,
-              version    : 'v2.2'
-          });
-      };
-
-      (function(d, s, id){
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) {return;}
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-59154242-1', 'auto');
-      ga('send', 'pageview');
-
-      FreegoMagnet = (function($){
-
-          function bind_ga_on_click(){
-              $('#mc-embedded-subscribe').click(function(){
-                  ga('send', 'event', 'button', 'click');
-              });
-          }
-
-          function init(){
-              bind_ga_on_click();
-          }
-
-          return {
-              init : init
-          }
-
-      })(jQuery);
-
-
-      $(document).ready(function(){
-          FreegoMagnet.init();
-      });
-
-  </script>
+  <%= render partial: '/layouts/facebook' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>

@@ -38,19 +38,13 @@ set :rails_env, :production
 
 namespace :deploy do
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
-
   before 'deploy:assets:backup_manifest', :copy_manifest do
     on roles(:web) do
       within release_path do
-        execute :cp, "#{release_path}/public/assets/.sprockets-manifest*", "#{release_path}/public/assets/manifest.json"
+        purged_filename = capture(:ls,"public/assets/.sprockets-manifest*").scan(/.*(manifest-.*)/)[0][0].to_s
+        execute :cp,
+                release_path.join('public',fetch(:assets_prefix),'.sprockets-manifest*'),
+                release_path.join('public',fetch(:assets_prefix),purged_filename)
       end
     end
   end

@@ -31,6 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 gem 'thin'
 
+gem 'paypal-sdk-rest'
+
 # Use Capistrano for deployment
 
 group :development do
@@ -50,5 +52,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails'
+
+  gem 'capybara'
 end
 
