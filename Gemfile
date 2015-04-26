@@ -31,7 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 gem 'thin'
 
-gem 'paypal-sdk-rest'
+gem 'paypal-sdk-merchant'
 
 # Use Capistrano for deployment
 
