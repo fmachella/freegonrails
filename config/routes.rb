@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   post 'prenota' => 'welcome#prenota'
+  post 'conferma' => 'welcome#conferma'
+  get 'grazie' => 'welcome#grazie'
+  get 'annullato' => 'welcome#annullato'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,1 +1,6 @@
-Grazie per aver prenotato
+Grazie per aver prenotato <%= puts_auth_token %>
+<br>
+Riepilogo e poi
+<%= form_tag '/conferma', method: 'post' do %>
+    <%= submit_tag('Conferma') %>
+<% end %>
