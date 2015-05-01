@@ -14,7 +14,7 @@ test: &default
   signature: AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
   # # With Certificate
   # cert_path: "config/cert_key.pem"
-  sandbox_email_address: fabrizio.machella-facilitator@gmail.com
+  sandbox_email_address: fabrizio.machella-merchant@gmail.com
 
   # # IP Address
   # ip_address: 127.0.0.1
@@ -29,3 +29,4 @@ development:
 production:
   <<: *default
   mode: live
+  app_id: APP-6C058157VJ843715Y
