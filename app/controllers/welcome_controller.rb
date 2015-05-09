@@ -11,8 +11,8 @@ class WelcomeController < ApplicationController
     @set_express_checkout = @api.build_set_express_checkout({
                                                                 :Version => '104.0',
                                                                 :SetExpressCheckoutRequestDetails => {
-                                                                    :ReturnURL => 'http://freegomag.net/grazie',
-                                                                    :CancelURL => 'http://freegomag.net/annullato',
+                                                                    :ReturnURL => 'http://localhost:3000/conferma',
+                                                                    :CancelURL => 'http://localhost:3000/annullato',
                                                                     :PaymentDetails =>[{
                                                                                            :OrderTotal =>{
                                                                                                :currencyID => 'EUR',
@@ -23,10 +23,11 @@ class WelcomeController < ApplicationController
 
     @set_express_checkout_response = @api.set_express_checkout(@set_express_checkout)
     if @set_express_checkout_response.ack.eql?'Success'
-      session[:express_token] = @set_express_checkout_response.token if @set_express_checkout_response.ack.eql?'Success'
-      redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=#{@set_express_checkout_response.Token}", status: 302
+      redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=#{@set_express_checkout_response.Token}", status: :found
+    else
+      @set_express_checkout_response
+      render :errore, status: :expectation_failed
     end
-    @set_express_checkout_response
   end
 
   def conferma
@@ -56,10 +57,10 @@ class WelcomeController < ApplicationController
                                                                                   # The timestamped token value that was returned in the
                                                                                   # `SetExpressCheckout` response and passed in the
                                                                                   # `GetExpressCheckoutDetails` request.
-                                                                                  :Token => session[:express_token],
+                                                                                  :Token => params['token'],
 
                                                                                   # Unique paypal buyer account identification number as returned in `GetExpressCheckoutDetails` Response
-                                                                                  :PayerID => 'A9BVYX8XCR9ZQ',
+                                                                                  :PayerID => params['PayerID'],
 
                                                                                   # information about the payment
                                                                                   :PaymentDetails => [{
@@ -100,11 +101,13 @@ class WelcomeController < ApplicationController
       # for DoExpressCheckout has occurred.
       @api.logger.info('Transaction ID : ' + @do_express_checkout_payment_response.DoExpressCheckoutPaymentResponseDetails.PaymentInfo[0].TransactionID)
 
-      # ###Error Response
+      render 'welcome/grazie'
     else
+      # ###Error Response
+
       @api.logger.error(@do_express_checkout_payment_response.Errors[0].LongMessage)
+      render 'welcome/errore'
     end
-    @do_express_checkout_payment_response
   end
 
   def annullato
