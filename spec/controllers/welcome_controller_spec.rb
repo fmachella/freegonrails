@@ -6,7 +6,7 @@ RSpec.describe WelcomeController, type: :controller do
     it 'responds successfully with an HTTP 200 status code' do
       get :index
       expect(response).to be_success
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:success)
     end
 
     it 'renders the index template' do
@@ -35,11 +35,10 @@ RSpec.describe WelcomeController, type: :controller do
 
     it 'redirect to paypal' do
       post :prenota
-      expect(response).to have_http_status(302)
+      expect(response).to have_http_status(:found)
     end
 
     let(:do_express_checkout_payment_response) { OpenStruct.new({Ack: 'Error', Errors: [OpenStruct.new({LongMessage: 'Questo è il messaggio di errore di paypal'})]}) }
-
     it 'Show error message on payment error callback' do
       get :conferma, token: 'anytoken', PayerID: 'anyid'
       expect(response).to render_template('welcome/errore')
